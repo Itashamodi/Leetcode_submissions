@@ -1,0 +1,22 @@
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) 
+    {
+        int row=0,col=matrix[0].length-1;
+        // //optimal
+        // check last element of each row starting from one if element > then row++ else check in row
+        // col-- if col<row false    
+
+        while(col>=0 && row<matrix.length){
+            if(matrix[row][col]>=target){
+                if(matrix[row][col]==target){
+                    return true;
+                }
+                col--;
+            }
+            else{
+                row++;
+            }
+        }
+        return false;    
+    }
+}
