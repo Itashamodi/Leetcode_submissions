@@ -1,0 +1,53 @@
+PowerRecursive Exponential approach
+drawbacks:
+TLE DUE TO EXTREME RECURSION AND FUNCTION CALLS
+class Solution {
+    public double myPow(double x, int n) 
+    {
+        // //exponential algorithm
+        // 2^10 == (2*2)5
+        // 2^5 == 2*(2)4
+        double ans = x;
+        int power = n;
+        if(n<0) n=-1*n;
+        //base case
+        if(n==0){
+            return 1;
+        }
+        if(n%2==0)
+        {
+            ans = myPow(x,n/2)*myPow(x,n/2);
+        }
+        else{
+            ans = ans*myPow(x,n-1);
+        }
+        if(power<0){
+            return (double)1.0/(double)ans ;
+        }
+        return ans;   
+    }
+}
+
+Iterative approach
+class Solution {
+    public double myPow(double x, int n) 
+    {
+        double ans = 1.0;
+        int power = n;
+        if(n<0) power=-1*n;
+        while(power>0){
+            if(power%2==0)
+            {
+                x=x*x;
+                power/=2;
+            }
+            else    {
+                ans*=x; power-=1;
+                }
+        }
+        if(n<0){
+            return (double)1.0/(double)ans ;
+        }
+        return ans;   
+    }
+}
