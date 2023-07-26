@@ -1,0 +1,25 @@
+//approach is to check at n/3 index after sorting the array is the element same as ith index element as it must occure n/3 times for an element to be great
+import java.util.List;
+class Solution {
+    public List<Integer> majorityElement(int[] nums) 
+    {
+        int majorindex = nums.length/3;
+        List<Integer> ans = new ArrayList<Integer>();
+        Arrays.sort(nums);
+        for(int i=0; i<nums.length && majorindex<nums.length;){
+            if(nums[i]==nums[majorindex]){
+                ans.add(nums[i]);
+                i=majorindex;
+                while(nums.length>1 && i<nums.length-1 && nums[i]==nums[i+1]){
+                    i++; majorindex++;
+                }
+                i=i+1; majorindex++;
+                majorindex+=nums.length/3;
+            }
+            else{
+                majorindex++;i++;
+            }
+        }
+        return ans;    
+    }
+}
