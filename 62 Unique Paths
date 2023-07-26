@@ -1,0 +1,45 @@
+//brute force  sc and tc: exponential due to repatative call stack 
+find all possible paths and return only the reward oriented paths
+class Solution {
+    public int Unique(int i,int j,int m,int n){
+        //base case
+        if(i>m-1 || j>n-1){
+            return 0;
+        }
+        if(i==m-1 && j==n-1){
+            return 1;
+        }
+        int ans =Unique(i+1,j,m,n)+Unique(i,j+1,m,n);
+        return ans;
+    }
+    public int uniquePaths(int m, int n) {
+        return Unique(0,0,m,n);
+        
+    }
+}
+
+//dynamic programming soution
+class Solution {
+    public int Unique(int i,int j,int m,int n, int[][] dp){
+        //base case
+        if(i>m-1 || j>n-1){
+            return 0;
+        }
+        if(i==m-1 && j==n-1){
+            dp[i][j]=1;
+            return 1;
+        }
+        if(dp[i][j]!=0){
+            return dp[i][j];
+        }
+        else{
+            dp[i][j]=Unique(i+1,j,m,n,dp)+Unique(i,j+1,m,n,dp);
+        }
+        return dp[i][j] ;
+    }
+    public int uniquePaths(int m, int n) {
+        int[][] dp = new int[m][n];
+        return Unique(0,0,m,n,dp);
+        
+    }
+}
