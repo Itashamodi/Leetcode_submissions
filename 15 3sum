@@ -1,0 +1,27 @@
+Brute force
+import java.util.HashSet;
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) 
+    {
+        Arrays.sort(nums); //[-4,-1,-1,0,1,2]
+        Set<List<Integer>> set = new HashSet<>(); 
+        for(int i=0,j=i+1; i<nums.length-2;){
+            int k = j+1;
+            while(k<nums.length){
+                if(nums[i]+nums[j]+nums[k]==0)
+                {
+                   List<Integer> temp=Arrays.asList(nums[i],nums[j],nums[k]);
+                    Collections.sort(temp);
+                    set.add(temp);
+                }
+                k++;
+            }
+            j++;
+            if(nums[i]==nums[i+1] || j==nums.length){
+                i++; j=i+1;
+            }
+        }
+        List<List<Integer>> ans = new ArrayList<>(set);
+        return ans;    
+    }
+}
