@@ -1,0 +1,29 @@
+public class Solution {
+	
+	public static Node<Integer> skipMdeleteN(Node<Integer> head, int M, int N) 
+    {
+        if(M==0){
+            return null;
+        }
+	    Node<Integer> temp = head;
+        while(temp!=null){
+            int keep = M-1;
+            //for keeping m nodes
+            while(keep>0 && temp!=null){
+                temp=temp.next;
+                keep--;
+            }
+            Node<Integer> prev = temp;
+            //for deleting n nodes
+            int del = N+1;
+            while(del>0 && temp!=null){
+                temp=temp.next;
+                del--;
+            }
+            if(prev!=null){
+            prev.next=temp;
+            }
+        }
+        return head;
+	}
+}
