@@ -1,0 +1,32 @@
+class Solution {
+    public boolean isPalindrome(ListNode head) 
+    {
+        ListNode temp = head;
+        boolean ans = false;
+        int length=0;
+        while(temp!=null){
+            length++;
+            temp=temp.next;
+        }
+        temp=head;
+        int l=length;
+        for(int i=0; temp!=null && i<=length/2; i++){
+            ListNode temp2 = temp;
+            for(int j=i; j<l && temp2!=null; j++){
+                if(temp2.val==temp.val){
+                    ans=true;
+                }
+                else{
+                    ans=false;
+                }
+                temp2=temp2.next;
+            }
+            if(ans==false){
+                    return false;
+            }
+            l--;
+            temp=temp.next;
+        }
+        return ans;
+    }
+}
