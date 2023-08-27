@@ -1,0 +1,28 @@
+public class Solution {
+    public ListNode detectCycle(ListNode head) 
+    {
+        // //using slow fast approach
+        ListNode slow = head, fast = head,entry=head;
+        while(fast!=null && fast.next!=null){
+            slow = slow.next;
+            fast = fast.next.next;
+            if(slow==fast){
+                while(slow!=entry && slow!=null){
+                    slow=slow.next;
+                    entry=entry.next;
+                }
+                return slow;
+            }
+        }
+        return null;    
+        // HashMap<ListNode,Integer> map = new HashMap<>();
+        // while(head!=null){
+        //     if(map.containsKey(head)){
+        //         return head;
+        //     }
+        //     map.put(head,1);
+        //     head=head.next;
+        // }
+        // return null;
+    }
+}
