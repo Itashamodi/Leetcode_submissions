@@ -1,0 +1,21 @@
+import java.util.* ;
+import java.io.*; 
+public class Solution {
+    public static ArrayList<Integer> subsetSum(int num[]) 
+    {
+        // 011
+        // 010
+        ArrayList<Integer> sum = new ArrayList<>();
+        //must be less than 2^n
+        for(int i=0; i<(1<<num.length); i++){
+            int subsetsum =0;
+            for(int j=0; j<num.length; j++){
+                if((i&(1<<j))!=0){
+                    subsetsum+=num[j];
+                }
+            }
+            sum.add(subsetsum);
+        }
+        Collections.sort(sum);
+        return sum;
+    }
