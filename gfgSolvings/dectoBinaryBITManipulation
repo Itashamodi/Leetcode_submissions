@@ -1,0 +1,22 @@
+ java.util.Scanner;
+public class HelloWorld {
+    public static int dectobinary(int number){
+        int pow = 1;
+        int ans = 0;
+        for(int pos=0; pos<number; pos++){
+            if(((1<<pos) & number)!=0){
+                ans+=pow;   
+            }
+           // System.out.println(ans);
+            pow*=10;
+        }
+        return ans;
+    }
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        int n = s.nextInt();
+        System.out.println("Binary Representation of the number is ");
+        System.out.print( dectobinary(n));
+        
+    }
+}
