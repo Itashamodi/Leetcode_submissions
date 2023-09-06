@@ -1,0 +1,21 @@
+import java.util.Scanner;
+class HelloWorld {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        System.out.println("Enter the number ");
+        int n = s.nextInt();
+        System.out.print("Enter the position to be toggled");
+        int pos = s.nextInt();
+        int bitmask = (1<<pos);
+        int bit = n & bitmask; // binary and (&) and not &&
+        if(bit!=0){
+            bitmask = ~(bitmask);
+            //int num = 
+            System.out.println("Original Bit was 1");
+            System.out.print(n & bitmask);
+        }
+        else{
+            System.out.print(n | bitmask);
+        }
+    }
+}
